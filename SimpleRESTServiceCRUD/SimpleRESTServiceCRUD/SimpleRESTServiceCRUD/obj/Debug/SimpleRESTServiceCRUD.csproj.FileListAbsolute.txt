@@ -1,0 +1,6 @@
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\bin\SimpleRESTServiceCRUD.dll.config
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\bin\SimpleRESTServiceCRUD.dll
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\bin\SimpleRESTServiceCRUD.pdb
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\obj\Debug\SimpleRESTServiceCRUD.dll
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\obj\Debug\SimpleRESTServiceCRUD.pdb
+D:\Data\NewDev\SimpleRESTServiceCRUD\SimpleRESTServiceCRUD\obj\Debug\SimpleRESTServiceCRUD.csprojResolveAssemblyReference.cache

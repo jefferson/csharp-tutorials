@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test WCF Data Service</title>
+    <script src="Scripts/jquery-2.1.4.js"></script>
+</head>
+<body>
+    <table border='1' id="books">
+        <!-- Make a Header Row -->
+        <tr>
+            <td><b>Book ID</b></td>
+            <td><b>ISBN</b></td>
+            <td><b>Title</b></td>
+        </tr>
+    </table>
+    <script>
+        var baseUrl = $(location).attr('host');
+        // GET ALL
+        function GetAllBooks() {
+            $.ajax({
+                type: "GET",
+                url: "http://" + baseUrl + "/BookService.svc/Books/",
+                contentType: "application/json; charset=utf-8;",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        var jsonData = JSON.stringify(value);
+                        var objData = $.parseJSON(jsonData);
+                        var bookId = objData.bookId;
+                        var isdb = objData.ISBN;
+                        var title = objData.Title;
+                        $('' + bookId + '' + isbn + '' + title + '').appendTo("#books");
+
+                    });
+                },
+                error: function (xhr) {
+                    console.log("error:" + xhr.responseText);
+                }
+            });
+        }
+
+        // GET BOOK BY ID
+        function GetBookById(id) {
+            $.ajax({
+                type: "GET",
+                url: "http://" + baseUrl + "/BookService.svc/Book/" + id,
+                contentType: "application/json; charset=utf-8;",
+                dataType: "json",
+                success: function (data) {
+                    var jsonData = JSON.stringify(data);
+                    var objData = $.parseJSON(jsonData);
+                    var bookId = objData.bookId;
+                    var isdb = objData.ISBN;
+                    var title = objData.Title;
+                    $('' + bookId + '' + isbn + '' + title + '').appendTo("#books");
+                },
+                error: function (xhr) {
+                    console.log("error:" + xhr.responseText);
+                }
+            });
+        }
+
+        // ADD NEW BOOK
+        function AddNewBook(id) {
+            var bookData = {
+                "BookId": 0,
+                "ISBN": "827363525272",
+                "Title": "Migration Strategies"
+            };
+
+            $.ajax({
+                tpye: "PUT",
+                url: "http://" + baseUrl + "/BookService.svc/AddBook/" + id,
+                data: JSON.stringify(bookData),
+                contentType: "application/json; charset=utf-8;",
+                dataType: "json",
+                processData: false,
+                success: function (data, status, jqXHR) {
+                    console.log("Success after post. Assinged Id:" + data);
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            AddNewBook(7);
+            GetAllBooks();
+        });
+
+    </script>
+</body>
+</html>
+
